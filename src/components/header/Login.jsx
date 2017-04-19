@@ -1,17 +1,13 @@
-import IconMenu from 'material-ui/IconMenu';
-import MenuItem from 'material-ui/MenuItem';
-import IconButton from 'material-ui/IconButton';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+//@flow
 import React, { Component } from 'react';
 
 class Login extends Component {
 
     render() {
+        const { loginUser } = this.props;
+
         return (
-            <IconMenu iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}            >
-                <MenuItem primaryText="Info" />
-                <MenuItem primaryText="Sign out" />
-            </IconMenu>
+            <span onClick={() => loginUser('string', 'string')}>Login element</span>
         );
     }
 

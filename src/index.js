@@ -8,6 +8,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import app from './reducers/index';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import sagas from './sagas/index';
 
 const logger = createLogger();
 const sagaMiddleware = createSagaMiddleware();
@@ -17,6 +18,7 @@ const store = createStore(
     applyMiddleware(sagaMiddleware, logger)
 );
 
+sagaMiddleware.run(sagas);
 injectTapEventPlugin();
 
 render(
