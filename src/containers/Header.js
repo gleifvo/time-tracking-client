@@ -1,7 +1,7 @@
 //@flow
 import { connect } from 'react-redux';
 import Header from '../components/header/Header.jsx';
-import { sendAuthRequest } from '../actions/user';
+import { sendAuthRequest, logOut } from '../actions/user';
 
 
 const mapStateToProps = (state) => {
@@ -12,6 +12,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         loginUser: (login, password) => {
             dispatch(sendAuthRequest(login, password))
+        },
+        logOut: (login, password) => {
+            dispatch(logOut())
         }
     }
 };

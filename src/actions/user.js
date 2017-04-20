@@ -16,3 +16,9 @@ export const loadUserData = (data) => {
         payload: data
     }
 };
+
+export const logOut = () => {
+    return {
+        type: constants.LOG_OUT
+    }
+};

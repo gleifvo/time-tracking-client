@@ -1,11 +1,17 @@
 import * as constants from '../constants/constants';
 
-const user = (state = { isLogged: false }, action) => {
+const defaultState = {
+    isLogged: false
+};
+
+const user = (state = defaultState, action) => {
     switch (action.type) {
         case constants.LOAD_USER_DATA:
             return {
                 ...state, ...action.payload
             }
+        case constants.LOG_OUT:
+            return defaultState;
         default:
             return state;
     }

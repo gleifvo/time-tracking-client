@@ -8,11 +8,13 @@ import React, { Component } from 'react';
 class Logged extends Component {
 
     render() {
+        const { logOut } = this.props;
+        
         return (
             <IconMenu
                 iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}>
                 <MenuItem primaryText="Info" />
-                <MenuItem primaryText="Sign out" />
+                <MenuItem onClick={() => logOut()} primaryText="Sign out" />
             </IconMenu>
         );
     }
