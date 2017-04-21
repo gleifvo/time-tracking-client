@@ -5,6 +5,7 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import CommunicationVpnKey from 'material-ui/svg-icons/communication/vpn-key';
+import CircularProgress from 'material-ui/CircularProgress';
 
 class Login extends Component {
 
@@ -30,7 +31,7 @@ class Login extends Component {
         ]
 
         const textAlign = {
-            'textAlign': 'center'
+            textAlign: 'center'
         }
 
         return (
@@ -52,6 +53,7 @@ class Login extends Component {
                         hintText={"Password"}
                         onChange={(event, newValue) => this.setState({ password: newValue })}
                         id="password" fullWidth={true} type={"password"} value={this.state.password} />
+                        <CircularProgress />
                 </Dialog>
                 <RaisedButton
                     backgroundColor="#a4c639"
