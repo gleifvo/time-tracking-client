@@ -4,7 +4,6 @@ import { loadUserData } from '../actions/user';
 
 function* handleAuthRequest(action) {
     yield put(loadUserData({
-        isLogged: true,
         token: 'qwerty'
     }));
 }

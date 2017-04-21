@@ -21,30 +21,32 @@ class Login extends Component {
         this.setState({ open: false });
     };
 
-
     render() {
         const { loginUser } = this.props;
 
         const actions = [
             <FlatButton label="Sign in" primary={true} keyboardFocused={true} onTouchTap={() => loginUser(this.state.login, this.state.password)} />,
-            <FlatButton label="Cancel" primary={true} keyboardFocused={true} onTouchTap={this.handleClose} />
         ]
 
-        const titleStyle = {
-            textAllign: 'center'
-        };
+        const textAlign = {
+            'textAlign': 'center'
+        }
 
-        const textInput = "1";
         return (
             <div>
                 <Dialog
-                    titleStyle={titleStyle}
+                    titleStyle={textAlign}
                     title="Login form"
                     DialogInline={true}
+                    onRequestClose={this.handleClose}
                     actions={actions}
                     open={this.state.open}>
-                    <TextField id="login" fullWidth={true} />
-                    <TextField id="password" fullWidth={true} type={"password"} />
+                    <TextField
+                        onChange={(event, newValue) => this.setState({ login: newValue })}
+                        id="login" fullWidth={true} inputStyle={textAlign} value={this.state.login} />
+                    <TextField
+                        onChange={(event, newValue) => this.setState({ password: newValue })}
+                        id="password" fullWidth={true} type={"password"} inputStyle={textAlign} value={this.state.password} />
                 </Dialog>
                 <RaisedButton label="Dialog" onTouchTap={this.handleOpen} />
             </div>

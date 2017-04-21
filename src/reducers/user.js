@@ -8,7 +8,7 @@ const user = (state = defaultState, action) => {
     switch (action.type) {
         case constants.LOAD_USER_DATA:
             return {
-                ...state, ...action.payload
+                ...state, ...action.payload, ...{ isLogged: true }
             }
         case constants.LOG_OUT:
             return defaultState;
