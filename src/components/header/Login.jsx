@@ -30,7 +30,7 @@ class Login extends Component {
         ]
 
         const textAlign = {
-            'textAlign': 'center'
+            textAlign: 'center'
         }
 
         return (
