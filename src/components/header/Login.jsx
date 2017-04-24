@@ -54,7 +54,6 @@ class Login extends Component {
                         id="password" fullWidth={true} type={"password"} value={this.state.password} />
                 </Dialog>
                 <RaisedButton
-                    backgroundColor="#a4c639"
                     icon={<CommunicationVpnKey />}
                     style={{
                         marginTop: 5

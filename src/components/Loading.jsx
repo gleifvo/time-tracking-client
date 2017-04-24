@@ -6,7 +6,6 @@ import '../styles/Loading.css'
 
 class Loading extends Component {
 
-
     render() {
         return (
             <Dialog
