@@ -9,14 +9,15 @@ import { Provider } from 'react-redux';
 import app from './reducers/index';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import sagas from './sagas/index';
-import { authTokenMiddleWare } from './middlewares/AuthTokenMiddleware';
+import { tokenEnrichmentMiddleware } from './middlewares/tokenEnrichmentMiddleware';
+import {tokenStorageMiddleware} from './middlewares/tokenStorageMiddleware';
 
 const logger = createLogger();
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
     app,
-    applyMiddleware(authTokenMiddleWare, sagaMiddleware, logger)
+    applyMiddleware(tokenEnrichmentMiddleware, tokenStorageMiddleware, sagaMiddleware, logger)
 );
 
 sagaMiddleware.run(sagas);

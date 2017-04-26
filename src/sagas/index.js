@@ -11,10 +11,8 @@ const api = axios.create({
 
 function* handleAuthRequest(action) {
     yield put(showLoading());
-    console.log(process.env);
 
     let { login, password } = action.payload;
-
     try {
         let response = yield api.post('/login', {
             login,

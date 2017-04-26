@@ -1,7 +1,9 @@
 import * as constants from '../constants/constants';
 
+const token = sessionStorage.getItem('token');
 const defaultState = {
-    isLogged: false
+    isLogged: !!token,
+    token
 };
 
 const user = (state = defaultState, action) => {
@@ -11,7 +13,7 @@ const user = (state = defaultState, action) => {
                 ...state, ...action.payload, ...{ isLogged: true }
             }
         case constants.LOG_OUT:
-            return defaultState;
+            return { isLogged: false };
         default:
             return state;
     }
