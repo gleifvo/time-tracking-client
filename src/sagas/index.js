@@ -22,7 +22,7 @@ function* handleAuthRequest(action) {
         });
 
         yield put(loadUserData({
-            token: 'qwerty'
+            token: response.headers.token
         }));
 
     } catch (error) {
