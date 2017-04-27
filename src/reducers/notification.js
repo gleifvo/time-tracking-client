@@ -10,7 +10,7 @@ const notification = (state = defaultState, action) => {
     switch (action.type) {
         case constants.SHOW_NOTIFICATION:
             return {
-                ...defaultState, ...action.payload, ...{ open: true }
+                ...defaultState, ...action.payload, open: true
             };
         case constants.HIDE_NOTIFICATION:
             return defaultState;
