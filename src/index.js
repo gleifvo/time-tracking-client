@@ -10,22 +10,38 @@ import app from './reducers/index';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import sagas from './sagas/index';
 import { tokenEnrichmentMiddleware } from './middlewares/tokenEnrichmentMiddleware';
-import {tokenStorageMiddleware} from './middlewares/tokenStorageMiddleware';
+import { tokenStorageMiddleware } from './middlewares/tokenStorageMiddleware';
+import { Router, Route, browserHistory } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
+import { routerMiddleware } from 'react-router-redux';
+import RaisedButtonExampleIcon from './components/UserInfo.jsx';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { createBrowserHistory } from 'history';
 
 const logger = createLogger();
 const sagaMiddleware = createSagaMiddleware();
+const middleware = routerMiddleware(browserHistory)
 
 const store = createStore(
     app,
-    applyMiddleware(tokenEnrichmentMiddleware, tokenStorageMiddleware, sagaMiddleware, logger)
+    applyMiddleware(logger, tokenEnrichmentMiddleware, tokenStorageMiddleware,
+        sagaMiddleware, middleware)
 );
+
+const history = syncHistoryWithStore(createBrowserHistory(), store);
 
 sagaMiddleware.run(sagas);
 injectTapEventPlugin();
 
 render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
+    <MuiThemeProvider>
+        <Provider store={store}>
+            <Router history={history}>
+                <App>
+                    <Route path="/user-info" component={RaisedButtonExampleIcon} />
+                </App>
+            </Router>
+        </Provider >
+    </MuiThemeProvider>,
     document.getElementById('root')
 );
