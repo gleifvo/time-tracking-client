@@ -14,7 +14,7 @@ import { tokenStorageMiddleware } from './middlewares/tokenStorageMiddleware';
 import { Router, Route, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { routerMiddleware } from 'react-router-redux';
-import RaisedButtonExampleIcon from './components/UserInfo.jsx';
+import UserInfo from './containers/UserInfo';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { createBrowserHistory } from 'history';
 
@@ -38,7 +38,7 @@ render(
         <Provider store={store}>
             <Router history={history}>
                 <App>
-                    <Route path="/user-info" component={RaisedButtonExampleIcon} />
+                    <Route path="/user-info" component={UserInfo} />
                 </App>
             </Router>
         </Provider >

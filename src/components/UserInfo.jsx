@@ -1,33 +1,33 @@
 import React from 'react';
-import RaisedButton from 'material-ui/RaisedButton';
-import { fullWhite } from 'material-ui/styles/colors';
-import ActionAndroid from 'material-ui/svg-icons/action/android';
-import FontIcon from 'material-ui/FontIcon';
+import { Card, CardHeader, CardTitle } from 'material-ui/Card';
 
-const style = {
-    margin: 12
-};
+import ActionAccountCircle from 'material-ui/svg-icons/action/account-circle';
 
-const RaisedButtonExampleIcon = () => (
-    <div>
-        <RaisedButton
-            icon={<ActionAndroid />}
-            style={style}
-        />
-        <RaisedButton
-            className="allah"
-            backgroundColor="#a4c639"
-            icon={<ActionAndroid color={fullWhite} />}
-            style={style}
-        />
-        <RaisedButton
-            href="https://github.com/callemall/material-ui"
-            target="_blank"
-            secondary={true}
-            icon={<FontIcon className="muidocs-icon-custom-github" />}
-            style={style}
-        />
-    </div>
-);
 
-export default RaisedButtonExampleIcon;
+class UserInfo extends React.Component {
+
+    render() {
+        const { userData } = this.props;
+        let body = userData.isLogged
+            ? (
+                <Card>
+                    <CardHeader
+                        avatar={
+                            <ActionAccountCircle style={{ height: 80, width: 80, display: 'block', margin: 'auto' }} />
+                        }
+                        style={{ paddingBottom: 0 }}
+                    />
+                    <CardTitle
+                        style={{ textAlign: 'center' }}
+                        title={`${userData.userInfo.firstName} ${userData.userInfo.lastName}`}
+                        subtitle={`${userData.userInfo.userType}`} />
+                </Card>
+            )
+            : (null)
+
+        return body;
+    }
+
+}
+
+export default UserInfo;

@@ -20,7 +20,8 @@ function* handleAuthRequest(action) {
         });
 
         yield put(loadUserData({
-            token: response.headers.token
+            token: response.headers.token,
+            userInfo: response.data
         }));
 
     } catch (error) {
