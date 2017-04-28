@@ -16,19 +16,18 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import { routerMiddleware } from 'react-router-redux';
 import UserInfo from './containers/UserInfo';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { createBrowserHistory } from 'history';
+import createHistory from 'history/createBrowserHistory'
 
 const logger = createLogger();
 const sagaMiddleware = createSagaMiddleware();
-const middleware = routerMiddleware(browserHistory)
+const history = createHistory();
+const routeMiddleware = routerMiddleware(history);
 
 const store = createStore(
     app,
     applyMiddleware(logger, tokenEnrichmentMiddleware, tokenStorageMiddleware,
-        sagaMiddleware, middleware)
+        sagaMiddleware, routeMiddleware)
 );
-
-const history = syncHistoryWithStore(createBrowserHistory(), store);
 
 sagaMiddleware.run(sagas);
 injectTapEventPlugin();
