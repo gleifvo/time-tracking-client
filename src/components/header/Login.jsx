@@ -26,7 +26,8 @@ class Login extends Component {
         const { loginUser } = this.props;
 
         const actions = [
-            <FlatButton label="Sign in" primary={true} keyboardFocused={true} onTouchTap={() => loginUser(this.state.login, this.state.password)} />,
+            <FlatButton label="Sign in" primary={true} keyboardFocused={true}
+                onTouchTap={() => loginUser(this.state.login, this.state.password)} />,
         ]
 
         const textAlign = {

@@ -7,11 +7,11 @@ import Login from './Login';
 class Header extends Component {
 
     render() {
-        const { user, loginUser, logOut } = this.props;
+        const { user } = this.props;
 
         const rightElement = user.isLogged
-            ? <Logged logOut={logOut} />
-            : <Login loginUser={loginUser} />
+            ? <Logged {...this.props} />
+            : <Login {...this.props} />
 
         return (
             <AppBar

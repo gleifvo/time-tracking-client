@@ -4,10 +4,10 @@ export const tokenStorageMiddleware = store => next => action => {
 
     switch (action.type) {
         case constants.LOG_OUT:
-            sessionStorage.removeItem('token');
+            sessionStorage.removeItem('user');
             break;
         case constants.LOAD_USER_DATA:
-            sessionStorage.setItem('token', action.payload.token);
+            sessionStorage.setItem('user', JSON.stringify(action.payload));
             break;
     }
 

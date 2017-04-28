@@ -1,9 +1,9 @@
 import * as constants from '../constants/constants';
 
-const token = sessionStorage.getItem('token');
+const userData = JSON.parse(sessionStorage.getItem('user'));
 const defaultState = {
-    isLogged: !!token,
-    token
+    isLogged: !!userData,
+    ...userData
 };
 
 const user = (state = defaultState, action) => {
