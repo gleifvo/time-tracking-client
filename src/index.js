@@ -16,7 +16,8 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import { routerMiddleware } from 'react-router-redux';
 import UserInfo from './containers/UserInfo';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import createHistory from 'history/createBrowserHistory'
+import createHistory from 'history/createBrowserHistory';
+import { enableBatching } from 'redux-batched-actions';
 
 const logger = createLogger();
 const sagaMiddleware = createSagaMiddleware();
@@ -24,7 +25,7 @@ const history = createHistory();
 const routeMiddleware = routerMiddleware(history);
 
 const store = createStore(
-    app,
+    enableBatching(app),
     applyMiddleware(logger, tokenEnrichmentMiddleware, tokenStorageMiddleware,
         sagaMiddleware, routeMiddleware)
 );

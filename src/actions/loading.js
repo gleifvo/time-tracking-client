@@ -1,4 +1,4 @@
-import * as constants from '../constants/constants';
+import * as constants from '../constants';
 
 export const showLoading = () => {
     return {

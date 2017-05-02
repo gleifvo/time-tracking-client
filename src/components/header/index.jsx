@@ -7,7 +7,7 @@ import Login from './Login';
 class Header extends Component {
 
     render() {
-        const { user } = this.props;
+        const { user, triggerDrawer } = this.props;
 
         const rightElement = user.isLogged
             ? <Logged {...this.props} />
@@ -16,7 +16,7 @@ class Header extends Component {
         return (
             <AppBar
                 iconElementRight={rightElement}
-                iconElementLeft={<span />}
+                onLeftIconButtonTouchTap={triggerDrawer}
             />
         );
     }

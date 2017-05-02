@@ -1,8 +1,9 @@
 //@flow
 import { connect } from 'react-redux';
-import Header from '../components/header/Header.jsx';
+import Header from '../components/header';
 import { sendAuthRequest, logOut } from '../actions/user';
-import { push } from 'react-router-redux'
+import { push } from 'react-router-redux';
+import { triggerNavDrawer } from '../actions/navDrawer';
 
 
 const mapStateToProps = (state) => {
@@ -20,6 +21,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         routeToUserInfo: () => {
             dispatch(push('/user-info'))
+        },
+        triggerDrawer: () => {
+            dispatch(triggerNavDrawer())
         }
     }
 };

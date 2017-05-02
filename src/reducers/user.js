@@ -1,4 +1,4 @@
-import * as constants from '../constants/constants';
+import * as constants from '../constants';
 
 const userData = JSON.parse(sessionStorage.getItem('user'));
 const defaultState = {

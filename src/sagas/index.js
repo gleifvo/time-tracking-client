@@ -1,5 +1,5 @@
 import { put, takeEvery } from 'redux-saga/effects';
-import * as constants from '../constants/constants';
+import * as constants from '../constants';
 import { loadUserData } from '../actions/user';
 import { hideLoading, showLoading } from '../actions/loading';
 import { showNotification } from '../actions/notification'
