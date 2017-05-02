@@ -10,8 +10,7 @@ import ActionWork from 'material-ui/svg-icons/action/work';
 class NavDrawer extends Component {
 
     render() {
-        const { changeView, triggerDrawer, isOpen } = this.props;
-
+        const { changeView, triggerDrawer, isOpen, userData } = this.props;
         return (
             <div>
                 <Drawer
@@ -23,10 +22,12 @@ class NavDrawer extends Component {
                         primaryText="Home"
                         leftIcon={<ActionHome />}
                         onTouchTap={() => changeView('/')} />
-                    <MenuItem
-                        primaryText="Projects"
-                        leftIcon={<ActionWork />}
-                        onTouchTap={() => changeView('/projects')} />
+                    {userData.isLogged
+                        ? <MenuItem
+                            primaryText="Projects"
+                            leftIcon={<ActionWork />}
+                            onTouchTap={() => changeView('/projects')} />
+                        : ''}
                 </Drawer>
             </div>
         );

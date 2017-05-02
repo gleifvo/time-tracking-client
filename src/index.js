@@ -15,6 +15,7 @@ import { Router, Route, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { routerMiddleware } from 'react-router-redux';
 import UserInfo from './containers/UserInfo';
+import ProjectsView from './containers/ProjectsView';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import createHistory from 'history/createBrowserHistory';
 import { enableBatching } from 'redux-batched-actions';
@@ -39,6 +40,7 @@ render(
             <Router history={history}>
                 <App>
                     <Route path="/user-info" component={UserInfo} />
+                    <Route path="/projects" component={ProjectsView} />
                 </App>
             </Router>
         </Provider >

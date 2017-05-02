@@ -6,7 +6,10 @@ import { push } from 'react-router-redux';
 import { batchActions } from 'redux-batched-actions';
 
 const mapStateToProps = (state) => {
-    return { isOpen: state.navDrawer.isOpen };
+    return {
+        userData: state.user,
+        isOpen: state.navDrawer.isOpen
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {
