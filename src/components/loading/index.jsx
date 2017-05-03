@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import Dialog from 'material-ui/Dialog';
 import CircularProgress from 'material-ui/CircularProgress';
-import '../styles/Loading.css'
+import '../../styles/Loading.css'
 
 class Loading extends Component {
 

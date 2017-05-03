@@ -1,6 +1,6 @@
 //@flow
 import { connect } from 'react-redux';
-import UserInfo from '../components/UserInfo'
+import UserInfo from '../views/userInfo'
 
 const mapStateToProps = (state) => {
     return { userData: state.user }

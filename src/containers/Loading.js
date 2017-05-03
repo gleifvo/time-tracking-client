@@ -1,6 +1,6 @@
 //@flow
 import { connect } from 'react-redux';
-import Loading from '../components/Loading.jsx'
+import Loading from '../components/loading'
 
 const mapStateToProps = (state) => {
     return state.loading

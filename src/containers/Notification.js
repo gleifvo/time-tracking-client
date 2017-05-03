@@ -1,6 +1,6 @@
 //@flow
 import { connect } from 'react-redux';
-import Notification from '../components/Notification.jsx'
+import Notification from '../components/notification'
 import { hideNotification } from '../actions/notification';
 
 const mapStateToProps = (state) => {

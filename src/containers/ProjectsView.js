@@ -1,9 +1,9 @@
 //@flow
 import { connect } from 'react-redux';
-import ProjectsView from '../components/ProjectsView'
+import ProjectsView from '../views/projectsView';
 
 const mapStateToProps = (state) => {
-    return state.projects;
+    return { projects: state.projects }
 };
 
 export default connect(
