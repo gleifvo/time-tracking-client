@@ -5,6 +5,10 @@ import ActionPageview from 'material-ui/svg-icons/action/pageview';
 
 class ProjectsView extends React.Component {
 
+    componentDidMount() {
+        this.props.fetchProjects();
+    }
+
     render() {
 
         const { projects } = this.props;
@@ -14,9 +18,9 @@ class ProjectsView extends React.Component {
                 <GridList
                     cellHeight={180}
                     padding={0}>
-                    {projects.map((project) => (
+                    {projects.map((project, index) => (
                         <GridTile
-                            key={project.id}
+                            key={index}
                             title={project.name}
                             subtitle={<span>by <b>{project.user.firstName}</b></span>}
                             actionIcon={<IconButton><ActionPageview color="white" /></IconButton>}                            >

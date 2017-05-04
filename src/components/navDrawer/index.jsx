@@ -26,7 +26,9 @@ class NavDrawer extends Component {
                         ? <MenuItem
                             primaryText="Projects"
                             leftIcon={<ActionWork />}
-                            onTouchTap={() => changeView('/projects')} />
+                            onTouchTap={() => {
+                                changeView('/projects');
+                            }} />
                         : ''}
                 </Drawer>
             </div>
