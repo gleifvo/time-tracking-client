@@ -3,8 +3,10 @@ import user from './user';
 import loading from './loading';
 import notification from './notification';
 import projects from './projects';
+import projectManagement from './projectManagement';
 import navDrawer from './navDrawer';
-import { routerReducer } from 'react-router-redux'
+import { routerReducer } from 'react-router-redux';
+import { reducer as formReducer } from 'redux-form';
 
 const app = combineReducers({
     user,
@@ -12,7 +14,9 @@ const app = combineReducers({
     notification,
     navDrawer,
     projects,
-    routing: routerReducer
+    projectManagement,
+    routing: routerReducer,
+    form: formReducer
 });
 
 export default app;

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import NavDrawer from '../components/navDrawer';
 import { triggerNavDrawer } from '../actions/navDrawer';
 import { push } from 'react-router-redux';
-import { batchActions } from 'redux-batched-actions';
 
 const mapStateToProps = (state) => {
     return {

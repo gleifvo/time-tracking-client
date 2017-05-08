@@ -2,6 +2,8 @@ import React from 'react';
 import { GridList, GridTile } from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import ActionPageview from 'material-ui/svg-icons/action/pageview';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class ProjectsView extends React.Component {
 
@@ -10,11 +12,20 @@ class ProjectsView extends React.Component {
     }
 
     render() {
-
-        const { projects } = this.props;
+        const { projects, user, createNewProject } = this.props;
 
         return (
-            <div >
+            <div>
+                {user.userInfo.userType === 'ADMIN' &&
+                    <RaisedButton
+                        style={{
+                            marginTop: '3px'
+                        }}
+                        primary={true}
+                        icon={<ContentAdd />}
+                        onTouchTap={createNewProject}
+                    />
+                }
                 <GridList
                     cellHeight={180}
                     padding={0}>

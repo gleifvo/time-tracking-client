@@ -1,23 +1,21 @@
 //@flow
 import { connect } from 'react-redux';
-import ProjectsView from '../views/projectsView';
-import { fetchProjects } from '../actions/projects';
+import ProjectManagement from '../views/projectManagement';
 import { push } from 'react-router-redux';
+import { createProject } from '../actions/projects';
 
 const mapStateToProps = (state) => {
     return {
         projects: state.projects,
-        user: state.user
+        user: state.user,
+        project: state.projectManagement
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchProjects: () => {
-            dispatch(fetchProjects());
-        },
-        createNewProject: () => {
-            dispatch(push('/project-management'));
+        createProject: (data) => {
+            dispatch(createProject(data));
         }
     }
 };
@@ -25,4 +23,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(ProjectsView)
+)(ProjectManagement)
