@@ -15,7 +15,7 @@ import { Router, Route } from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
 import UserInfo from './containers/UserInfo';
 import ProjectsView from './containers/ProjectsView';
-import projectManagement from './containers/projectManagement';
+import projectManagement from './containers/ProjectManagement';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import createHistory from 'history/createBrowserHistory';
 import { enableBatching } from 'redux-batched-actions';

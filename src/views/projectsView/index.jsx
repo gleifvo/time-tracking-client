@@ -2,6 +2,7 @@ import React from 'react';
 import { GridList, GridTile } from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import ActionPageview from 'material-ui/svg-icons/action/pageview';
+import ActionDelete from 'material-ui/svg-icons/action/delete';
 import EditorModeEdit from 'material-ui/svg-icons/editor/mode-edit';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -13,7 +14,7 @@ class ProjectsView extends React.Component {
     }
 
     render() {
-        const { projects, user, createNewProject, editProject } = this.props;
+        const { projects, user, createNewProject, editProject, deleteProject } = this.props;
 
         return (
             <div>
@@ -34,12 +35,17 @@ class ProjectsView extends React.Component {
                         <GridTile
                             key={index}
                             title={project.name}
-                            subtitle={<span>by <b>{project.user.firstName}</b></span>}
+                            subtitle={<span>by <b>{`${project.user.firstName} ${project.user.lastName}`}</b></span>}
                             actionIcon={<div>
                                 {user.userInfo.userType === 'ADMIN' &&
-                                    <IconButton onTouchTap={() => editProject(project)}>
-                                        <EditorModeEdit color="white" />
-                                    </IconButton>
+                                    <span>
+                                        <IconButton onTouchTap={() => deleteProject(project)}>
+                                            <ActionDelete color="white" />
+                                        </IconButton>
+                                        <IconButton onTouchTap={() => editProject(project)}>
+                                            <EditorModeEdit color="white" />
+                                        </IconButton>
+                                    </span>
                                 }
                                 <IconButton><ActionPageview color="white" /></IconButton>
                             </div>}>

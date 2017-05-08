@@ -14,3 +14,21 @@ export const fetchProjects = () => {
         type: constants.FETCH_PROJECTS
     }
 };
+
+export const deleteProject = (project) => {
+    return {
+        type: constants.DELETE_PROJECT,
+        payload: {
+            ...project
+        }
+    }
+};
+
+export const removeProject = (project) => {
+    return {
+        type: constants.REMOVE_PROJECT,
+        payload: {
+            ...project
+        }
+    }
+};

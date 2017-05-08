@@ -1,9 +1,11 @@
 import api from './client';
-import { loadProjects } from '../actions/projects';
+import { loadProjects, removeProject } from '../actions/projects';
 import { hideLoading, showLoading } from '../actions/loading';
 import { showNotification } from '../actions/notification';
+import { closeConfirmation } from '../actions/confirmation';
 import { put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
+import { batchActions } from 'redux-batched-actions';
 
 export function* fetchProjects(action) {
     yield put(showLoading());
@@ -39,6 +41,27 @@ export function* createOrUpdateProject(action) {
             }, { headers: { token: action.token } });
 
         yield put(push('/projects'));
+
+    } catch (error) {
+        yield put(showNotification({
+            message: 'Server error'
+        }));
+    }
+
+    yield put(hideLoading());
+}
+
+export function* deleteProject(action) {
+    yield put(showLoading());
+    try {
+        api.delete(action.payload._links.self.href, {
+            headers: { token: action.token }
+        });
+
+        yield put(batchActions([
+            removeProject({ ...action.payload }),
+            closeConfirmation()
+        ]));
 
     } catch (error) {
         yield put(showNotification({
