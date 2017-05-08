@@ -41,7 +41,7 @@ render(
                 <App>
                     <Route path="/user-info" component={UserInfo} />
                     <Route path="/projects" component={ProjectsView} />
-                    <Route path="/project-management/:id?" component={projectManagement} />
+                    <Route path="/project-management" component={projectManagement} />
                 </App>
             </Router>
         </Provider >

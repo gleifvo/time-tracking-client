@@ -1,14 +1,13 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Field, reduxForm, Form } from 'redux-form';
-import MenuItem from 'material-ui/MenuItem';
 import { TextField } from 'redux-form-material-ui';
 import { validator, serverSideValidator } from './validators';
 
 class ProjectManagement extends React.Component {
 
     render() {
-        const { projects, user, project, createProject, handleSubmit } = this.props;
+        const { user, initialValues, createOrUpdateProject, handleSubmit } = this.props;
 
         return (
             <Form
@@ -16,8 +15,10 @@ class ProjectManagement extends React.Component {
                     width: '600px',
                     margin: 'auto'
                 }}
-                onSubmit={handleSubmit((data) => createProject({
-                    ...data, user: user.userInfo._links.self.href
+                onSubmit={handleSubmit((data) => createOrUpdateProject({
+                    formData: { ...data },
+                    initialValues,
+                    user: user.userInfo._links.self.href
                 }))}>
                 <div className="form-group">
                     <Field fullWidth={true} hintText="Project name" name="name" component={TextField} />
@@ -26,10 +27,11 @@ class ProjectManagement extends React.Component {
                     style={{
                         marginTop: '10px'
                     }}
-                    label={project.isNew
+                    label={initialValues.isNew
                         ? 'Create'
                         : 'Update'
-                    } primary={true} />
+                    }
+                    primary={true} />
             </Form >
         )
     }

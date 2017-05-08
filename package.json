@@ -12,6 +12,7 @@
     "lessc-each": "^1.1.0",
     "material-ui": "^0.17.4",
     "npm-run-all": "^4.0.2",
+    "object-diff": "^0.0.4",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",

@@ -1,7 +1,7 @@
 import api from './client';
 import { hideLoading, showLoading } from '../actions/loading';
 import { showNotification } from '../actions/notification';
-import { put, takeEvery } from 'redux-saga/effects';
+import { put } from 'redux-saga/effects';
 import { loadUserData } from '../actions/user';
 
 export function* handleAuthRequest(action) {

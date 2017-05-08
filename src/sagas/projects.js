@@ -2,7 +2,7 @@ import api from './client';
 import { loadProjects } from '../actions/projects';
 import { hideLoading, showLoading } from '../actions/loading';
 import { showNotification } from '../actions/notification';
-import { put, takeEvery } from 'redux-saga/effects';
+import { put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 
 export function* fetchProjects(action) {
@@ -26,13 +26,18 @@ export function* fetchProjects(action) {
     yield put(hideLoading());
 }
 
-export function* createProject(action) {
+export function* createOrUpdateProject(action) {
     yield put(showLoading());
 
     try {
-        let response = yield api.post('/api/projects', {
-            ...action.payload
-        }, { headers: { token: action.token } });
+        yield action.payload.isNew
+            ? api.post('/api/projects', {
+                ...action.payload.formData
+            }, { headers: { token: action.token } })
+            : api.patch(action.payload.href, {
+                ...action.payload.formData
+            }, { headers: { token: action.token } });
+
         yield put(push('/projects'));
 
     } catch (error) {

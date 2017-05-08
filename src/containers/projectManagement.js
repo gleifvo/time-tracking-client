@@ -1,21 +1,30 @@
 //@flow
 import { connect } from 'react-redux';
 import ProjectManagement from '../views/projectManagement';
-import { push } from 'react-router-redux';
-import { createProject } from '../actions/projects';
+import { createOrUpdateProject } from '../actions/projectManagement';
+import diff from 'object-diff';
 
 const mapStateToProps = (state) => {
     return {
-        projects: state.projects,
         user: state.user,
-        project: state.projectManagement
+        initialValues: state.projectManagement
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createProject: (data) => {
-            dispatch(createProject(data));
+        createOrUpdateProject: (payload) => {
+            payload.initialValues.isNew
+                ? payload.formData.user = payload.user
+                : payload.href = payload.formData._links.self.href
+
+            dispatch(createOrUpdateProject({
+                formData: {
+                    ...diff(payload.initialValues, payload.formData)
+                },
+                isNew: payload.initialValues.isNew,
+                href: payload.href
+            }));
         }
     }
 };
