@@ -27,11 +27,10 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(push('/project-management'));
         },
         deleteProject: (project) => {
-            dispatch(showConfirmation({
-                message: 'Are you sure to delete this project?'
-            }, () => {
-                dispatch(deleteProject(project));
-            }))
+            dispatch(showConfirmation(
+                { message: 'Are you sure to delete this project?' },
+                deleteProject(project)
+            ))
         }
     }
 };

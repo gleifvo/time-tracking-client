@@ -5,11 +5,12 @@ import FlatButton from 'material-ui/FlatButton';
 
 class Confirmation extends React.Component {
     render() {
+        const { action, handleConfirm } = this.props;
         const actions = [
             <FlatButton
                 label={this.props.confirmLabel || 'Cofirm'}
                 primary={true}
-                onTouchTap={this.props.handleConfirm}
+                onTouchTap={() => handleConfirm(action)}
             />,
             <FlatButton
                 label={this.props.discardLabel || 'Discard'}

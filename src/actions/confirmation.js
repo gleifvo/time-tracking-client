@@ -1,11 +1,11 @@
 import * as constants from '../constants';
 
-export const showConfirmation = (labels, handleConfirm) => {
+export const showConfirmation = (labels, action) => {
     return {
         type: constants.SHOW_CONFIRMATION,
         payload: {
             ...labels,
-            handleConfirm
+            action
         }
     }
 }

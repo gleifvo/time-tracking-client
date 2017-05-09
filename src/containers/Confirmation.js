@@ -11,6 +11,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         handleClose: () => {
             dispatch(closeConfirmation())
+        },
+        handleConfirm: (action) => {
+            dispatch(action)
         }
     }
 };
