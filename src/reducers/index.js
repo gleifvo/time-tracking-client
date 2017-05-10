@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import user from './user';
 import loading from './loading';
+import metadata from './metadata';
 import notification from './notification';
 import projects from './projects';
 import projectManagement from './projectManagement';
@@ -16,6 +17,7 @@ const app = combineReducers({
     confirmation,
     navDrawer,
     projects,
+    metadata,
     projectManagement,
     routing: routerReducer,
     form: formReducer

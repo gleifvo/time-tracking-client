@@ -14,12 +14,8 @@ export const validator = data => {
 
 export const serverSideValidator = (data, dispatch, props) => {
     return new Promise((resolve, reject) => {
-        let updatedProps = Object.keys(diff(props.initialValues, data));
-
-        if (!updatedProps.length) {
-            resolve();
-            return;
-        }
-        dispatch(validateProject(data, resolve, reject))
+        props.initialValues.name !== data.name
+            ? dispatch(validateProject(data, resolve, reject))
+            : resolve();
     });
 }

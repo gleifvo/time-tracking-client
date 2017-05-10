@@ -25,6 +25,13 @@ export const edit = (payload) => {
     }
 }
 
+export const fetchProjectForEdit = (project) => {
+    return {
+        type: constants.FETCH_PROJECT_FOR_EDIT,
+        payload: { ...project }
+    }
+}
+
 export const createNew = (payload) => {
     return {
         type: constants.CREATE_NEW_PROJECT,

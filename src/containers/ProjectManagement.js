@@ -2,12 +2,15 @@
 import { connect } from 'react-redux';
 import ProjectManagement from '../views/projectManagement';
 import { createOrUpdateProject } from '../actions/projectManagement';
+import { fetchUsers } from '../actions/user';
 import diff from 'object-diff';
 
 const mapStateToProps = (state) => {
     return {
         user: state.user,
-        initialValues: state.projectManagement
+        initialValues: state.projectManagement,
+        formData: state.form['project-form'],
+        metadata: state.metadata
     }
 };
 
@@ -16,7 +19,7 @@ const mapDispatchToProps = (dispatch) => {
         createOrUpdateProject: (payload) => {
             payload.initialValues.isNew
                 ? payload.formData.user = payload.user
-                : payload.href = payload.formData._links.self.href
+                : payload.href = payload.initialValues._links.self.href
 
             dispatch(createOrUpdateProject({
                 formData: {
@@ -25,6 +28,9 @@ const mapDispatchToProps = (dispatch) => {
                 isNew: payload.initialValues.isNew,
                 href: payload.href
             }));
+        },
+        fetchUsers: () => {
+            dispatch(fetchUsers());
         }
     }
 };

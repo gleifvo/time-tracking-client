@@ -22,3 +22,19 @@ export const logOut = () => {
         type: constants.LOG_OUT
     }
 };
+
+export const loadUsers = (users) => {
+    return {
+        type: constants.LOAD_USERS,
+        payload: {
+            users
+        }
+    }
+};
+
+export const fetchUsers = (users) => {
+    return {
+        type: constants.FETCH_USERS,
+        payload: users
+    }
+};
