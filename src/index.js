@@ -9,7 +9,6 @@ import { Provider } from 'react-redux';
 import app from './reducers';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import sagas from './sagas';
-import { tokenEnrichmentMiddleware } from './middlewares/tokenEnrichmentMiddleware';
 import { tokenStorageMiddleware } from './middlewares/tokenStorageMiddleware';
 import { Router, Route } from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
@@ -27,8 +26,7 @@ const routeMiddleware = routerMiddleware(history);
 
 const store = createStore(
     enableBatching(app),
-    applyMiddleware(logger, tokenEnrichmentMiddleware, tokenStorageMiddleware,
-        sagaMiddleware, routeMiddleware)
+    applyMiddleware(logger, tokenStorageMiddleware, sagaMiddleware, routeMiddleware)
 );
 
 sagaMiddleware.run(sagas);

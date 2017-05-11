@@ -7,19 +7,22 @@ import { put, call } from 'redux-saga/effects';
 import { batchActions } from 'redux-batched-actions';
 import { edit } from '../actions/projectManagement';
 import { push } from 'react-router-redux';
+import { UserSelector } from '../selectors';
+import { select } from 'redux-saga/effects';
 
 
 export function* createOrUpdateProject(action) {
     yield put(showLoading());
+    const token = yield select(UserSelector.getToken);
 
     try {
         yield action.payload.isNew
             ? call(api.post, '/api/projects', {
                 ...action.payload.formData
-            }, { headers: { token: action.token } })
+            }, { headers: { token } })
             : call(api.patch, action.payload.href, {
                 ...action.payload.formData
-            }, { headers: { token: action.token } });
+            }, { headers: { token } });
 
         yield put(push('/projects'));
 
@@ -31,11 +34,14 @@ export function* createOrUpdateProject(action) {
 
     yield put(hideLoading());
 }
+
 export function* deleteProject(action) {
     yield put(showLoading());
+    const token = yield select(UserSelector.getToken);
+
     try {
         yield call(api.delete, action.payload._links.self.href, {
-            headers: { token: action.token }
+            headers: { token }
         });
 
         yield put(batchActions([
@@ -54,8 +60,9 @@ export function* deleteProject(action) {
 
 export function* validateProject(action) {
     try {
+        const token = yield select(UserSelector.getToken);
         let response = yield call(api.get, '/api/projects/search/existsByName', {
-            headers: { token: action.token },
+            headers: { token },
             params: { name: action.payload.name }
         });
 
@@ -74,10 +81,11 @@ export function* validateProject(action) {
 
 export function* fetchProjectUsers(action) {
     yield put(showLoading());
+    const token = yield select(UserSelector.getToken);
 
     try {
         let response = yield call(api.get, action.payload._links.users.href, {
-            headers: { token: action.token }
+            headers: { token }
         });
 
         let users = response.data._embedded.users
