@@ -27,6 +27,7 @@
         "no-undef": "warn",
         "no-unreachable": "warn",
         "constructor-super": "warn",
-        "valid-typeof": "warn"
+        "valid-typeof": "warn",
+        "no-unused-vars": "warn"
     }
 }
