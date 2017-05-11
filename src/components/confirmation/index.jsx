@@ -8,7 +8,7 @@ class Confirmation extends React.Component {
         const { action, handleConfirm } = this.props;
         const actions = [
             <FlatButton
-                label={this.props.confirmLabel || 'Cofirm'}
+                label={this.props.confirmLabel || 'Confirm'}
                 primary={true}
                 onTouchTap={() => handleConfirm(action)}
             />,

@@ -1,12 +1,13 @@
 //@flow
-import React, { Component } from 'react';
+import React from 'react';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import ActionHome from 'material-ui/svg-icons/action/home';
 import ActionWork from 'material-ui/svg-icons/action/work';
+import SocialGroup from 'material-ui/svg-icons/social/group';
 
 
-class NavDrawer extends Component {
+class NavDrawer extends React.Component {
 
     render() {
         const { changeView, triggerDrawer, isOpen, userData } = this.props;
@@ -21,14 +22,22 @@ class NavDrawer extends Component {
                         primaryText="Home"
                         leftIcon={<ActionHome />}
                         onTouchTap={() => changeView('/')} />
-                    {userData.isLogged
-                        ? <MenuItem
+                    {userData.isLogged &&
+                        <MenuItem
                             primaryText="Projects"
                             leftIcon={<ActionWork />}
                             onTouchTap={() => {
                                 changeView('/projects');
                             }} />
-                        : ''}
+                    }
+                    {userData.isLogged && userData.userInfo.userType === 'ADMIN' &&
+                        <MenuItem
+                            primaryText="Users"
+                            leftIcon={<SocialGroup />}
+                            onTouchTap={() => {
+                                changeView('/user-management');
+                            }} />
+                    }
                 </Drawer>
             </div>
         );
