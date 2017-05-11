@@ -1,5 +1,4 @@
 import { validateProject } from '../../../actions/projectManagement';
-import diff from 'object-diff';
 
 export const validator = data => {
     const errors = {};

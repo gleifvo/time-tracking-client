@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import ProjectsView from '../views/projectsView';
 import { fetchProjects, deleteProject } from '../actions/projects';
 import { showConfirmation } from '../actions/confirmation';
-import { edit as editProject, createNew as createNewProject, fetchProjectForEdit } from '../actions/projectManagement';
+import { createNew as createNewProject, fetchProjectForEdit } from '../actions/projectManagement';
 import { push } from 'react-router-redux';
 
 const mapStateToProps = (state) => {

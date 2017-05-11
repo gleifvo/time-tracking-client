@@ -8,7 +8,7 @@ import MenuItem from 'material-ui/MenuItem';
 class ProjectManagement extends React.Component {
 
     componentDidMount() {
-        const { metadata, fetchUsers, initialValues } = this.props;
+        const { metadata, fetchUsers } = this.props;
         !metadata.users.length && fetchUsers();
     }
 

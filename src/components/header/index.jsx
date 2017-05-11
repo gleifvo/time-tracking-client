@@ -1,10 +1,10 @@
 //@flow
-import React, { Component } from 'react';
+import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import Logged from './Logged';
 import Login from './Login';
 
-class Header extends Component {
+class Header extends React.Component {
 
     render() {
         const { user, triggerDrawer } = this.props;
