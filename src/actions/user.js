@@ -38,3 +38,14 @@ export const fetchUsers = (users) => {
         payload: users
     }
 };
+
+export const validateLogin = (data, resolve, reject) => {
+    return {
+        type: constants.VALODATE_LOGIN,
+        payload: {
+            ...data,
+            resolve,
+            reject
+        }
+    }
+};

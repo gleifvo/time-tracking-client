@@ -55,3 +55,24 @@ export function* fetchUsers(action) {
 
     yield put(hideLoading());
 }
+
+export function* validateLogin(action) {
+    try {
+        const token = yield select(UserSelector.getToken);
+        let response = yield call(api.get, '/api/users/search/existsByLogin', {
+            headers: { token },
+            params: { login: action.payload.login }
+        });
+
+        if (response.data.isExist) {
+            action.payload.reject({ login: 'Login already exist' });
+            return;
+        }
+
+        action.payload.resolve();
+    } catch (error) {
+        yield put(showNotification({
+            message: 'Server error'
+        }));
+    }
+}
