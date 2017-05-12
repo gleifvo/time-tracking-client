@@ -5,7 +5,7 @@ import { fetchProjects, deleteProject } from '../actions/projects';
 import { showConfirmation } from '../actions/confirmation';
 import { createNew as createNewProject, fetchProjectForEdit } from '../actions/projectManagement';
 import { push } from 'react-router-redux';
-
+import { fetchTasks } from '../actions/tasks';
 const mapStateToProps = (state) => {
     return {
         projects: state.projects,
@@ -32,8 +32,7 @@ const mapDispatchToProps = (dispatch) => {
             ))
         },
         showTasks: (project) => {
-            // dispatch();
-            dispatch(push('/project-tasks'));
+            dispatch(fetchTasks(project));
         },
     }
 };
