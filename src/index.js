@@ -15,7 +15,7 @@ import { routerMiddleware } from 'react-router-redux';
 import UserInfo from './containers/UserInfo';
 import ProjectsView from './containers/ProjectsView';
 import projectManagement from './containers/ProjectManagement';
-import UserManagement from './containers/UserManagement';
+import UsersView from './containers/UsersView';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import createHistory from 'history/createBrowserHistory';
 import { enableBatching } from 'redux-batched-actions';
@@ -41,7 +41,7 @@ render(
                     <Route path="/user-info" component={UserInfo} />
                     <Route path="/projects" component={ProjectsView} />
                     <Route path="/project-management" component={projectManagement} />
-                    <Route path="/user-management" component={UserManagement} />
+                    <Route path="/users" component={UsersView} />
                 </App>
             </Router>
         </Provider >

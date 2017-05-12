@@ -35,7 +35,7 @@ class NavDrawer extends React.Component {
                             primaryText="Users"
                             leftIcon={<SocialGroup />}
                             onTouchTap={() => {
-                                changeView('/user-management');
+                                changeView('/users');
                             }} />
                     }
                 </Drawer>

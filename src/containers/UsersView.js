@@ -1,6 +1,6 @@
 //@flow
 import { connect } from 'react-redux';
-import UserManagement from '../views/userManagement';
+import UsersView from '../views/usersView';
 import { fetchUsers } from '../actions/user';
 
 const mapStateToProps = (state) => {
@@ -20,4 +20,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(UserManagement)
+)(UsersView)

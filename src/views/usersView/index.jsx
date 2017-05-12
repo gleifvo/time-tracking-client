@@ -8,7 +8,7 @@ import {
     TableRowColumn,
 } from 'material-ui/Table';
 
-class UserManagement extends React.Component {
+class UsersView extends React.Component {
 
     componentDidMount() {
         const { users, fetchUsers } = this.props;
@@ -44,4 +44,4 @@ class UserManagement extends React.Component {
 
 }
 
-export default UserManagement;
+export default UsersView;
