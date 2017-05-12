@@ -15,6 +15,7 @@ import { routerMiddleware } from 'react-router-redux';
 import UserInfo from './containers/UserInfo';
 import ProjectsView from './containers/ProjectsView';
 import projectManagement from './containers/ProjectManagement';
+import TasksView from './containers/TasksView';
 import UsersView from './containers/UsersView';
 import UserManagement from './containers/UserManagement';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -44,6 +45,7 @@ render(
                     <Route path="/project-management" component={projectManagement} />
                     <Route path="/users" component={UsersView} />
                     <Route path="/user-management" component={UserManagement} />
+                    <Route path="/project-tasks" component={TasksView} />
                 </App>
             </Router>
         </Provider >

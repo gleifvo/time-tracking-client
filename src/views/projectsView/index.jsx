@@ -14,7 +14,7 @@ class ProjectsView extends React.Component {
     }
 
     render() {
-        const { projects, user, createNewProject, editProject, deleteProject } = this.props;
+        const { projects, user, createNewProject, editProject, deleteProject, showTasks } = this.props;
 
         return (
             <div>
@@ -47,7 +47,9 @@ class ProjectsView extends React.Component {
                                         </IconButton>
                                     </span>
                                 }
-                                <IconButton><ActionPageview color="white" /></IconButton>
+                                <IconButton onTouchTap={() => showTasks(project)}>
+                                    <ActionPageview color="white" />
+                                </IconButton>
                             </div>}>
                         </GridTile>
                     ))}

@@ -30,7 +30,11 @@ const mapDispatchToProps = (dispatch) => {
                 { message: 'Are you sure to delete this project?' },
                 deleteProject(project)
             ))
-        }
+        },
+        showTasks: (project) => {
+            // dispatch();
+            dispatch(push('/project-tasks'));
+        },
     }
 };
 
