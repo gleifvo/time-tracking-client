@@ -1,6 +1,7 @@
 //@flow
 import { connect } from 'react-redux';
-import TasksView from '../views/tasksView'
+import TasksView from '../views/tasksView';
+import { push } from 'react-router-redux';
 
 const mapStateToProps = (state) => {
     return {
@@ -9,7 +10,15 @@ const mapStateToProps = (state) => {
     }
 };
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        changeView: (path) => {
+            dispatch(push(path));
+        }
+    }
+};
+
 export default connect(
     mapStateToProps,
-    null
+    mapDispatchToProps
 )(TasksView)
