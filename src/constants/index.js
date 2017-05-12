@@ -19,6 +19,7 @@ export const REMOVE_PROJECT = 'REMOVE_PROJECT';
 export const LOAD_USERS = 'LOAD_USERS';
 export const FETCH_USERS = 'FETCH_USERS';
 export const VALODATE_LOGIN = 'VALODATE_LOGIN';
+export const CREATE_USER = 'CREATE_USER';
 
 export const CREATE_NEW_PROJECT = 'CREATE_NEW_PROJECT';
 export const EDIT_PROJECT = 'EDIT_PROJECT';

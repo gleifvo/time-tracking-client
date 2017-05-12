@@ -1,6 +1,7 @@
 //@flow
 import { connect } from 'react-redux';
 import UserManagement from '../views/userManagement';
+import { createUser } from '../actions/user'
 
 
 const mapStateToProps = (state) => {
@@ -12,7 +13,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         createUser: (payload) => {
-            console.log(payload);
+            dispatch(createUser(payload));
         }
     }
 };

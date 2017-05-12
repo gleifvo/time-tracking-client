@@ -49,3 +49,11 @@ export const validateLogin = (data, resolve, reject) => {
         }
     }
 };
+
+
+export const createUser = (payload) => {
+    return {
+        type: constants.CREATE_USER,
+        payload
+    }
+}

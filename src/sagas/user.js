@@ -5,6 +5,7 @@ import { put, call } from 'redux-saga/effects';
 import { loadUserData, loadUsers } from '../actions/user';
 import { UserSelector } from '../selectors';
 import { select } from 'redux-saga/effects';
+import { push } from 'react-router-redux';
 
 export function* handleAuthRequest(action) {
     yield put(showLoading());
@@ -75,4 +76,24 @@ export function* validateLogin(action) {
             message: 'Server error'
         }));
     }
+}
+
+export function* createUser(action) {
+    yield put(showLoading());
+    const token = yield select(UserSelector.getToken);
+
+    try {
+        yield call(api.post, '/api/users', {
+            ...action.payload
+        }, { headers: { token } })
+
+        yield put(push('/users'));
+
+    } catch (error) {
+        yield put(showNotification({
+            message: 'Server error'
+        }));
+    }
+
+    yield put(hideLoading());
 }
