@@ -25,6 +25,15 @@ export const validator = data => {
         errors.password = 'Required field';
     } else if (data.password.length > 35) {
         errors.password = 'Must be 35 characters or less';
+    } else if (data.password !== data.confirmPassword) {
+        errors.password = "Password doesn't match"
+        errors.confirmPassword = "Password doesn't match"
+    }
+
+    if (!data.confirmPassword) {
+        errors.confirmPassword = 'Required field';
+    } else if (data.confirmPassword.length > 35) {
+        errors.confirmPassword = 'Must be 35 characters or less';
     }
 
     if (!data.userType) {

@@ -21,6 +21,7 @@ class UserManagement extends React.Component {
                     <Field fullWidth={true} hintText="First Name" name="firstName" component={TextField} />
                     <Field fullWidth={true} hintText="Last Name" name="lastName" component={TextField} />
                     <Field type={'password'} fullWidth={true} hintText="Password" name="password" component={TextField} />
+                    <Field type={'password'} fullWidth={true} hintText="Confirm password" name="confirmPassword" component={TextField} />
                     <Field
                         fullWidth={true}
                         hintText="Role"
