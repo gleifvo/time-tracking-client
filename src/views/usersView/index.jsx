@@ -9,16 +9,18 @@ import {
 } from 'material-ui/Table';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import RaisedButton from 'material-ui/RaisedButton';
+import IconButton from 'material-ui/IconButton';
+import NavigationClose from 'material-ui/svg-icons/navigation/close';
 
 class UsersView extends React.Component {
 
     componentDidMount() {
-        const { users, fetchUsers } = this.props;
-        !users.length && fetchUsers();
+        const { fetchUsers } = this.props;
+        fetchUsers();
     }
 
     render() {
-        const { users, user, openUserForm } = this.props;
+        const { users, user, openUserForm, deleteUser } = this.props;
 
         return (
             <div>
@@ -35,6 +37,7 @@ class UsersView extends React.Component {
                 <Table selectable={false}>
                     <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                         <TableRow>
+                            <TableHeaderColumn />
                             <TableHeaderColumn>Login</TableHeaderColumn>
                             <TableHeaderColumn>Role</TableHeaderColumn>
                             <TableHeaderColumn>First Name</TableHeaderColumn>
@@ -44,6 +47,11 @@ class UsersView extends React.Component {
                     <TableBody displayRowCheckbox={false}>
                         {users.map((user, index) => (
                             <TableRow key={index}>
+                                <TableRowColumn>{
+                                    <IconButton onTouchTap={() => deleteUser(user)}>
+                                        <NavigationClose />
+                                    </IconButton>
+                                }</TableRowColumn>
                                 <TableRowColumn>{user.login}</TableRowColumn>
                                 <TableRowColumn>{user.userType}</TableRowColumn>
                                 <TableRowColumn>{user.firstName}</TableRowColumn>

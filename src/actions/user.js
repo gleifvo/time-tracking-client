@@ -57,3 +57,21 @@ export const createUser = (payload) => {
         payload
     }
 }
+
+export const deleteUser = (user) => {
+    return {
+        type: constants.DELETE_USER,
+        payload: {
+            ...user
+        }
+    }
+};
+
+export const removeUser = (user) => {
+    return {
+        type: constants.REMOVE_USER,
+        payload: {
+            ...user
+        }
+    }
+};

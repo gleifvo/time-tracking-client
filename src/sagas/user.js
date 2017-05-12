@@ -6,6 +6,9 @@ import { loadUserData, loadUsers } from '../actions/user';
 import { UserSelector } from '../selectors';
 import { select } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
+import { closeConfirmation } from '../actions/confirmation';
+import { removeUser } from '../actions/user';
+import { batchActions } from 'redux-batched-actions';
 
 export function* handleAuthRequest(action) {
     yield put(showLoading());
@@ -88,6 +91,29 @@ export function* createUser(action) {
         }, { headers: { token } })
 
         yield put(push('/users'));
+
+    } catch (error) {
+        yield put(showNotification({
+            message: 'Server error'
+        }));
+    }
+
+    yield put(hideLoading());
+}
+
+export function* deleteUser(action) {
+    yield put(showLoading());
+    const token = yield select(UserSelector.getToken);
+
+    try {
+        yield call(api.delete, action.payload._links.self.href, {
+            headers: { token }
+        });
+
+        yield put(batchActions([
+            removeUser({ ...action.payload }),
+            closeConfirmation()
+        ]));
 
     } catch (error) {
         yield put(showNotification({

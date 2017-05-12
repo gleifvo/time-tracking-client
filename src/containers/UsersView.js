@@ -1,8 +1,9 @@
 //@flow
 import { connect } from 'react-redux';
 import UsersView from '../views/usersView';
-import { fetchUsers } from '../actions/user';
+import { fetchUsers, deleteUser } from '../actions/user';
 import { push } from 'react-router-redux';
+import { showConfirmation } from '../actions/confirmation';
 
 const mapStateToProps = (state) => {
     return {
@@ -18,6 +19,12 @@ const mapDispatchToProps = (dispatch) => {
         },
         openUserForm: () => {
             dispatch(push('/user-management'));
+        },
+        deleteUser: (user) => {
+            dispatch(showConfirmation(
+                { message: 'Are you sure to delete this user?' },
+                deleteUser(user)
+            ))
         }
     }
 };
