@@ -31,11 +31,12 @@ export function* validateTask(action) {
 export function* createOrUpdateTask(action) {
     yield put(showLoading());
     const token = yield select(UserSelector.getToken);
+    const user = yield select(UserSelector.getUserHref);
 
     try {
         yield action.payload.isNew
             ? call(api.post, '/api/tasks', {
-                ...action.payload.task
+                ...action.payload.task, project: action.payload.project, user
             }, { headers: { token } })
             : call(api.patch, action.payload.href, {
                 ...action.payload.task

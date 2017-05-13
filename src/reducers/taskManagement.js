@@ -7,7 +7,7 @@ const defaultState = {
 const taskManagement = (state = defaultState, action) => {
     switch (action.type) {
         case constants.CREATE_NEW_TASK:
-            return { ...state, ...defaultState, ...action.payload };
+            return { ...defaultState, ...action.payload };
         case constants.EDIT_TASK:
             return { ...state, ...action.payload, isNew: false };
         default:
