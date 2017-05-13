@@ -8,6 +8,7 @@ import projectManagement from './projectManagement';
 import navDrawer from './navDrawer';
 import tasksView from './tasksView';
 import confirmation from './confirmation';
+import taskManagement from './taskManagement'
 import { routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
 
@@ -21,6 +22,7 @@ const app = combineReducers({
     tasksView,
     metadata,
     projectManagement,
+    taskManagement,
     routing: routerReducer,
     form: formReducer
 });

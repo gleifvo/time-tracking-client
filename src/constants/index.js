@@ -32,3 +32,7 @@ export const CLOSE_CONFIRMATION = 'CLOSE_CONFIRMATION';
 
 export const FETCH_TASKS = 'FETCH_TASKS';
 export const LOAD_TASKS = 'LOAD_TASKS';
+export const VALIDATE_TASK = 'VALIDATE_TASK';
+export const CREATE_OR_UPDATE_TASK = 'CREATE_OR_UPDATE_TASK';
+export const CREATE_NEW_TASK = 'CREATE_NEW_TASK';
+export const EDIT_TASK = 'EDIT_TASK';

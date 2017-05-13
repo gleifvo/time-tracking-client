@@ -18,6 +18,7 @@ import projectManagement from './containers/ProjectManagement';
 import TasksView from './containers/TasksView';
 import UsersView from './containers/UsersView';
 import UserManagement from './containers/UserManagement';
+import TaskManagement from './containers/TaskManagement';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import createHistory from 'history/createBrowserHistory';
 import { enableBatching } from 'redux-batched-actions';
@@ -46,6 +47,7 @@ render(
                     <Route path="/users" component={UsersView} />
                     <Route path="/user-management" component={UserManagement} />
                     <Route path="/project-tasks" component={TasksView} />
+                    <Route path="/task-management" component={TaskManagement} />
                 </App>
             </Router>
         </Provider >

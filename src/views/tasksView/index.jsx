@@ -11,13 +11,15 @@ import SocialPerson from 'material-ui/svg-icons/social/person';
 
 class TasksView extends React.Component {
 
-    componentDidMount() {
-        const { tasksView, changeView } = this.props;
-        !tasksView.project && changeView('/projects');
+    componentWillMount() {
+        const { tasksView, changeView, fetchTasks } = this.props;
+        !tasksView.project
+            ? changeView('/projects')
+            : fetchTasks(tasksView.project);
     }
 
     render() {
-        const { tasksView } = this.props;
+        const { tasksView, createNewTask } = this.props;
 
         return (
             <div className='tasks_view'>
@@ -29,6 +31,7 @@ class TasksView extends React.Component {
                                 && `${tasksView.project.user.firstName} ${tasksView.project.user.lastName} `} />
                         <CardActions>
                             <RaisedButton
+                                onTouchTap={() => createNewTask(tasksView.project)}
                                 label="Create task"
                                 labelPosition="after"
                                 primary={true}
