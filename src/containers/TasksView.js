@@ -5,8 +5,7 @@ import { push } from 'react-router-redux';
 
 const mapStateToProps = (state) => {
     return {
-        user: state.user,
-        tasks: state.tasks
+        tasksView: state.tasksView
     }
 };
 

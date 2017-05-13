@@ -4,7 +4,7 @@ const defaultState = {
     tasks: []
 }
 
-const tasks = (state = defaultState, action) => {
+const tasksView = (state = defaultState, action) => {
     switch (action.type) {
         case constants.LOAD_TASKS:
             return { ...state, ...action.payload }
@@ -13,4 +13,4 @@ const tasks = (state = defaultState, action) => {
     }
 };
 
-export default tasks;
+export default tasksView;

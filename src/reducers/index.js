@@ -6,7 +6,7 @@ import notification from './notification';
 import projects from './projects';
 import projectManagement from './projectManagement';
 import navDrawer from './navDrawer';
-import tasks from './tasks';
+import tasksView from './tasksView';
 import confirmation from './confirmation';
 import { routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
@@ -18,7 +18,7 @@ const app = combineReducers({
     confirmation,
     navDrawer,
     projects,
-    tasks,
+    tasksView,
     metadata,
     projectManagement,
     routing: routerReducer,
