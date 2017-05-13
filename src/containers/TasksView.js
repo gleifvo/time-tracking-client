@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 import TasksView from '../views/tasksView';
 import { push } from 'react-router-redux';
-import { createNew } from '../actions/taskManagement';
+import { createNew, edit } from '../actions/taskManagement';
 import { fetchTasks } from '../actions/tasks';
 
 const mapStateToProps = (state) => {
@@ -15,6 +15,10 @@ const mapDispatchToProps = (dispatch) => {
     return {
         createNewTask: (project) => {
             dispatch(createNew(project));
+            dispatch(push('/task-management'));
+        },
+        editTask: (task) => {
+            dispatch(edit(task));
             dispatch(push('/task-management'));
         },
         changeView: (path) => {

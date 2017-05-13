@@ -11,10 +11,13 @@ export const validateTask = (task, resolve, reject) => {
     }
 };
 
-export const createOrUpdateTask = (task) => {
+export const createOrUpdateTask = (task, metadata) => {
     return {
         type: constants.CREATE_OR_UPDATE_TASK,
-        payload: task
+        payload: {
+            task,
+            ...metadata
+        }
     }
 };
 

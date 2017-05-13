@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import TaskManagement from '../views/taskManagement';
 import { createOrUpdateTask } from '../actions/taskManagement';
 import { push } from 'react-router-redux';
+import diff from 'object-diff';
 
 
 const mapStateToProps = (state) => {
@@ -13,8 +14,17 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createOrUpdateTask: (task) => {
-            dispatch(createOrUpdateTask({ ...task, project: task.project._links.self.href }));
+        createOrUpdateTask: (payload) => {
+            const updatedData = {
+                ...diff(payload.initialValues, payload.data)
+            }
+
+            const isNew = payload.initialValues.isNew;
+            dispatch(createOrUpdateTask({ ...updatedData }, {
+                isNew,
+                project: isNew && payload.data.project._links.self.href,
+                href: !isNew && payload.data._links.self.href
+            }));
         },
         changeView: (path) => {
             dispatch(push(path));

@@ -8,7 +8,7 @@ class TaskManagement extends React.Component {
 
     componentWillMount() {
         const { initialValues, changeView } = this.props;
-        !initialValues.project && changeView('/project-tasks');
+        !initialValues.project && !initialValues._links && changeView('/project-tasks');
     }
 
     render() {
@@ -19,7 +19,10 @@ class TaskManagement extends React.Component {
                     width: '600px',
                     margin: 'auto'
                 }}
-                onSubmit={handleSubmit((data) => createOrUpdateTask(data))}>
+                onSubmit={handleSubmit((data) => createOrUpdateTask({
+                    data,
+                    initialValues
+                }))}>
                 <div className="form-group">
                     <Field fullWidth={true} hintText="Name" name="name" component={TextField} />
                     <Field

@@ -8,6 +8,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Avatar from 'material-ui/Avatar';
 import Chip from 'material-ui/Chip';
 import SocialPerson from 'material-ui/svg-icons/social/person';
+import IconButton from 'material-ui/IconButton';
+import EditorModeEdit from 'material-ui/svg-icons/editor/mode-edit';
 
 class TasksView extends React.Component {
 
@@ -19,7 +21,7 @@ class TasksView extends React.Component {
     }
 
     render() {
-        const { tasksView, createNewTask } = this.props;
+        const { tasksView, createNewTask, editTask } = this.props;
 
         return (
             <div className='tasks_view'>
@@ -53,6 +55,11 @@ class TasksView extends React.Component {
                                                     <Avatar color="#444" icon={<SocialPerson />} />
                                                     {`${task.user.firstName} ${task.user.lastName}`}
                                                 </Chip>
+                                                <IconButton
+                                                    className="task-edit"
+                                                    onTouchTap={() => { editTask(task) }}>
+                                                    <EditorModeEdit color="black" />
+                                                </IconButton>
                                                 <h3>{task.description}</h3>
                                             </div>
                                         </Tab>

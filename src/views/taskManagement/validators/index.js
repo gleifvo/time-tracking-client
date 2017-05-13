@@ -18,8 +18,10 @@ export const validator = data => {
     return errors
 }
 
-export const serverSideValidator = (data, dispatch) => {
+export const serverSideValidator = (data, dispatch, props) => {
     return new Promise((resolve, reject) => {
-        dispatch(validateTask(data, resolve, reject))
+        props.initialValues.name !== data.name
+            ? dispatch(validateTask(data, resolve, reject))
+            : resolve();
     });
 }
