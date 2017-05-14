@@ -29,8 +29,9 @@ class TasksView extends React.Component {
                     <Card>
                         <CardTitle
                             title={tasksView.project && tasksView.project.name}
-                            subtitle={tasksView.project
-                                && `${tasksView.project.user.firstName} ${tasksView.project.user.lastName} `} />
+                            subtitle={(tasksView.project && tasksView.project.user)
+                                ? `${tasksView.project.user.firstName} ${tasksView.project.user.lastName} `
+                                : ''} />
                         <CardActions>
                             <RaisedButton
                                 onTouchTap={() => createNewTask(tasksView.project)}
@@ -53,7 +54,10 @@ class TasksView extends React.Component {
                                             <div className='container'>
                                                 <Chip>
                                                     <Avatar color="#444" icon={<SocialPerson />} />
-                                                    {`${task.user.firstName} ${task.user.lastName}`}
+                                                    {task.user
+                                                        ? `${task.user.firstName} ${task.user.lastName}`
+                                                        : 'Deleted user'
+                                                    }
                                                 </Chip>
                                                 <IconButton
                                                     className="task-edit"

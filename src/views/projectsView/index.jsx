@@ -35,7 +35,12 @@ class ProjectsView extends React.Component {
                         <GridTile
                             key={index}
                             title={project.name}
-                            subtitle={<span>by <b>{`${project.user.firstName} ${project.user.lastName}`}</b></span>}
+                            subtitle={<span>by <b>
+                                {project.user
+                                    ? `${project.user.firstName} ${project.user.lastName}`
+                                    : 'Deleted user'
+                                }
+                            </b></span>}
                             actionIcon={<div>
                                 {user.userInfo.userType === 'ADMIN' &&
                                     <span>
