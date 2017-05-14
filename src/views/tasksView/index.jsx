@@ -11,6 +11,9 @@ import SocialPerson from 'material-ui/svg-icons/social/person';
 import IconButton from 'material-ui/IconButton';
 import EditorModeEdit from 'material-ui/svg-icons/editor/mode-edit';
 import ContentClear from 'material-ui/svg-icons/content/clear';
+import ActionInfo from 'material-ui/svg-icons/action/info';
+import ActionSchedule from 'material-ui/svg-icons/action/schedule';
+import LinearProgress from 'material-ui/LinearProgress';
 
 class TasksView extends React.Component {
 
@@ -51,7 +54,8 @@ class TasksView extends React.Component {
                                 <div>
                                     <h2>{task.name} </h2>
                                     <Tabs>
-                                        <Tab label="Description" >
+                                        <Tab label="Description"
+                                            icon={<ActionInfo />}>
                                             <div className='container'>
                                                 <Chip>
                                                     <Avatar color="#444" icon={<SocialPerson />} />
@@ -73,10 +77,16 @@ class TasksView extends React.Component {
                                                 <h3>{task.description}</h3>
                                             </div>
                                         </Tab>
-                                        <Tab label="Time Reporting" >
-                                            <div className='container'>
-                                                <h2 >Time Reporting</h2>
-                                            </div>
+                                        <Tab
+                                            label="Time Reporting"
+                                            icon={<ActionSchedule />}>
+                                            {task.reports
+                                                ? 'Reports'
+                                                : <div className='loading-block'>
+                                                    <LinearProgress mode="indeterminate" />
+                                                </div>
+                                            }
+
                                         </Tab>
                                     </Tabs>
                                 </div>
