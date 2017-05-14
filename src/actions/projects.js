@@ -18,17 +18,14 @@ export const fetchProjects = () => {
 export const deleteProject = (project) => {
     return {
         type: constants.DELETE_PROJECT,
-        payload: {
-            ...project
-        }
+        payload: project
+
     }
 };
 
 export const removeProject = (project) => {
     return {
         type: constants.REMOVE_PROJECT,
-        payload: {
-            ...project
-        }
+        payload: project
     }
 };

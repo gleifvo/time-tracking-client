@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import TasksView from '../views/tasksView';
 import { push } from 'react-router-redux';
 import { createNew, edit } from '../actions/taskManagement';
-import { fetchTasks } from '../actions/tasks';
+import { fetchTasks, deleteTask } from '../actions/tasks';
+import { showConfirmation } from '../actions/confirmation';
 
 const mapStateToProps = (state) => {
     return {
@@ -20,6 +21,13 @@ const mapDispatchToProps = (dispatch) => {
         editTask: (task) => {
             dispatch(edit(task));
             dispatch(push('/task-management'));
+        },
+        deleteTask: (task) => {
+            dispatch(showConfirmation(
+                { message: 'Are you sure to delete this task?' },
+                deleteTask(task)
+            ))
+
         },
         changeView: (path) => {
             dispatch(push(path));
