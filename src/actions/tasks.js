@@ -48,3 +48,14 @@ export const fetchReports = (task) => {
         payload: task
     }
 };
+
+export const createOrUpdateReport = (time, report, task) => {
+    return {
+        type: constants.CREATE_OR_UPDATE_REPORT,
+        payload: {
+            time,
+            report,
+            task
+        }
+    }
+};

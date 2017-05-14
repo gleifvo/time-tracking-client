@@ -73,3 +73,35 @@ export function* fetchReports(action) {
         }))
     }
 }
+
+export function* createOrUpdateReport(action) {
+    yield put(showLoading());
+    const token = yield select(UserSelector.getToken);
+    const user = yield select(UserSelector.getUserHref);
+    const isNew = !action.payload.report._links;
+
+    try {
+        yield isNew
+            ? call(api.post, '/api/reports', {
+                time: action.payload.time, user, task: action.payload.task._links.self.href
+            }, { headers: { token } })
+            : call(api.patch, action.payload.report._links.self.href, {
+                time: action.payload.time
+            }, { headers: { token } });
+
+        yield put(showNotification({
+            message: isNew ? 'Report created' : 'Report updated'
+        }))
+    } catch (error) {
+        (error.response && error.response.status === 403)
+            ? yield put(showNotification({
+                message: "You can't create a report for this task",
+                time: 15000
+            }))
+            : yield put(showNotification({
+                message: 'Server error'
+            }))
+    }
+
+    yield put(hideLoading());
+}

@@ -13,7 +13,7 @@ import EditorModeEdit from 'material-ui/svg-icons/editor/mode-edit';
 class ReportsView extends React.Component {
 
     render() {
-        const { task, user, handleSubmit, userReport } = this.props;
+        const { task, user, handleSubmit, userReport, createOrUpdateReport } = this.props;
         const hasReports = task.reports;
 
         const reports = !!hasReports && userReport
@@ -29,7 +29,8 @@ class ReportsView extends React.Component {
                             key={index}
                             disabled={true}>
                             {report.user.login === user.login
-                                ? <Form onSubmit={handleSubmit(data => console.log(data))}>
+                                ? <Form onSubmit={handleSubmit(data =>
+                                    createOrUpdateReport(data.time, report, task))}>
                                     <span>
                                         <Field
                                             hintText="Hours"
