@@ -27,8 +27,7 @@ class TaskManagement extends React.Component {
                     <Field fullWidth={true} hintText="Name" name="name" component={TextField} />
                     <Field
                         multiLine={true}
-                        rows={1}
-                        rowsMax={10}
+                        rows={3}
                         fullWidth={true}
                         hintText="Description"
                         floatingLabelText="Task description"
