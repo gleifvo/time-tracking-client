@@ -32,6 +32,8 @@ export const CLOSE_CONFIRMATION = 'CLOSE_CONFIRMATION';
 
 export const FETCH_TASKS = 'FETCH_TASKS';
 export const LOAD_TASKS = 'LOAD_TASKS';
+export const LOAD_REPORTS = 'LOAD_REPORTS';
+export const FETCH_REPORTS = 'FETCH_REPORTS';
 export const DELETE_TASK = 'DELETE_TASK';
 export const REMOVE_TASK = 'REMOVE_TASK';
 export const VALIDATE_TASK = 'VALIDATE_TASK';

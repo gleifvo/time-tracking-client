@@ -13,9 +13,16 @@ const tasksView = (state = defaultState, action) => {
                 ...state,
                 tasks: state.tasks.filter(task => task.name !== action.payload.name)
             }
+        case constants.LOAD_REPORTS:
+            return {
+                ...state,
+                tasks: state.tasks.map(task => task.name === action.payload.name
+                    ? action.payload
+                    : task)
+            }
         default:
             return state;
-    };
+    }
 }
 
 export default tasksView;

@@ -23,6 +23,7 @@ function* sagas() {
 
         takeLatest(constants.FETCH_TASKS, tasksSagas.fetchTasks),
         takeLatest(constants.DELETE_TASK, tasksSagas.deleteTask),
+        takeLatest(constants.FETCH_REPORTS, tasksSagas.fetchReports),
 
         takeLatest(constants.VALIDATE_TASK, taskManagementSagas.validateTask),
         takeLatest(constants.CREATE_OR_UPDATE_TASK, taskManagementSagas.createOrUpdateTask),

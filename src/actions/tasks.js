@@ -31,3 +31,20 @@ export const removeTask = (task) => {
         payload: task
     }
 };
+
+export const loadReports = (task, reports) => {
+    return {
+        type: constants.LOAD_REPORTS,
+        payload: {
+            ...task,
+            reports
+        }
+    }
+};
+
+export const fetchReports = (task) => {
+    return {
+        type: constants.FETCH_REPORTS,
+        payload: task
+    }
+};

@@ -15,7 +15,7 @@ import { routerMiddleware } from 'react-router-redux';
 import UserInfo from './containers/UserInfo';
 import ProjectsView from './containers/ProjectsView';
 import projectManagement from './containers/ProjectManagement';
-import TasksView from './containers/TasksView';
+import TasksView from './containers/tasksView';
 import UsersView from './containers/UsersView';
 import UserManagement from './containers/UserManagement';
 import TaskManagement from './containers/TaskManagement';

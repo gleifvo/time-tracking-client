@@ -5,7 +5,7 @@ import { put, call } from 'redux-saga/effects';
 import { UserSelector } from '../selectors';
 import { select } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
-import { loadTasks, removeTask } from '../actions/tasks';
+import { loadTasks, removeTask, loadReports } from '../actions/tasks';
 import { batchActions } from 'redux-batched-actions';
 import { closeConfirmation } from '../actions/confirmation';
 
@@ -15,7 +15,8 @@ export function* fetchTasks(action) {
 
     try {
         let response = yield call(api.get, action.payload._links.tasks.href, {
-            headers: { token }
+            headers: { token },
+            params: { projection: 'user' }
         });
         let tasks = response.data._embedded.tasks;
 
@@ -55,4 +56,20 @@ export function* deleteTask(action) {
     }
 
     yield put(hideLoading());
+}
+
+export function* fetchReports(action) {
+    const token = yield select(UserSelector.getToken);
+
+    try {
+        let response = yield call(api.get, action.payload._links.reports.href, {
+            headers: { token },
+            params: { projection: 'user' }
+        });
+        yield put(loadReports(action.payload, response.data._embedded.reports))
+    } catch (error) {
+        yield put(showNotification({
+            message: 'Server error'
+        }))
+    }
 }
