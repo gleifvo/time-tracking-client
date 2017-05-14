@@ -59,3 +59,16 @@ export const createOrUpdateReport = (time, report, task) => {
         }
     }
 };
+
+export const addReport = (report, user, task) => {
+    return {
+        type: constants.ADD_REPORT,
+        payload: {
+            report: {
+                ...report,
+                user
+            },
+            task
+        }
+    }
+};

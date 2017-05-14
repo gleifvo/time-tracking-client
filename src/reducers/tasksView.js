@@ -20,6 +20,14 @@ const tasksView = (state = defaultState, action) => {
                     ? action.payload
                     : task)
             }
+        case constants.ADD_REPORT:
+            return {
+                ...state,
+                tasks: [...state.tasks
+                    .map(task => task.name === action.payload.task.name
+                        ? { ...task, reports: [action.payload.report, ...task.reports] }
+                        : task)]
+            }
         default:
             return state;
     }

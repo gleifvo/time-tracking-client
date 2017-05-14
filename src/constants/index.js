@@ -34,6 +34,7 @@ export const FETCH_TASKS = 'FETCH_TASKS';
 export const LOAD_TASKS = 'LOAD_TASKS';
 export const LOAD_REPORTS = 'LOAD_REPORTS';
 export const CREATE_OR_UPDATE_REPORT = 'CREATE_OR_UPDATE_REPORT';
+export const ADD_REPORT = 'ADD_REPORT';
 export const FETCH_REPORTS = 'FETCH_REPORTS';
 export const DELETE_TASK = 'DELETE_TASK';
 export const REMOVE_TASK = 'REMOVE_TASK';

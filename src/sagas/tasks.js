@@ -5,7 +5,7 @@ import { put, call } from 'redux-saga/effects';
 import { UserSelector } from '../selectors';
 import { select } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
-import { loadTasks, removeTask, loadReports } from '../actions/tasks';
+import { loadTasks, removeTask, loadReports, addReport } from '../actions/tasks';
 import { batchActions } from 'redux-batched-actions';
 import { closeConfirmation } from '../actions/confirmation';
 
@@ -78,16 +78,19 @@ export function* createOrUpdateReport(action) {
     yield put(showLoading());
     const token = yield select(UserSelector.getToken);
     const user = yield select(UserSelector.getUserHref);
+    const userData = yield select(UserSelector.getUserData);
     const isNew = !action.payload.report._links;
 
     try {
-        yield isNew
+        let response = yield isNew
             ? call(api.post, '/api/reports', {
                 time: action.payload.time, user, task: action.payload.task._links.self.href
             }, { headers: { token } })
             : call(api.patch, action.payload.report._links.self.href, {
                 time: action.payload.time
             }, { headers: { token } });
+
+        isNew && (yield put(addReport(response.data, userData, action.payload.task)));
 
         yield put(showNotification({
             message: isNew ? 'Report created' : 'Report updated'
