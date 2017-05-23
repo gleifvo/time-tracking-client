@@ -48,7 +48,7 @@ class ReportsView extends React.Component {
                                 : <TextField
                                     disabled={true}
                                     hintText="Hours"
-                                    defaultValue={report.time} />
+                                    value={report.time} />
                             }
                         </ListItem>
                     })
