@@ -11,8 +11,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createOrUpdateReport: (time, report, task) => {
-            dispatch(createOrUpdateReport(time, report, task));
+        createOrUpdateReport: (data, report, task) => {
+            dispatch(createOrUpdateReport(data, report, task));
         }
     }
 };

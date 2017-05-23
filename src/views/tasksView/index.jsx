@@ -52,7 +52,10 @@ class TasksView extends React.Component {
                                                 initialValues={{
                                                     time: userReport
                                                         ? userReport.time
-                                                        : 0
+                                                        : 0,
+                                                    date: userReport
+                                                        ? new Date(userReport.date)
+                                                        : new Date()
                                                 }}
                                                 userReport={userReport}
                                                 form={task.name}

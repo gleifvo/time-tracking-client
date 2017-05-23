@@ -84,11 +84,9 @@ export function* createOrUpdateReport(action) {
     try {
         let response = yield isNew
             ? call(api.post, '/api/reports', {
-                time: action.payload.time, user, task: action.payload.task._links.self.href
+                ...action.payload.data, user, task: action.payload.task._links.self.href
             }, { headers: { token } })
-            : call(api.patch, action.payload.report._links.self.href, {
-                time: action.payload.time
-            }, { headers: { token } });
+            : call(api.patch, action.payload.report._links.self.href, action.payload.data, { headers: { token } });
 
         isNew && (yield put(addReport(response.data, userData, action.payload.task)));
 

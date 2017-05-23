@@ -3,7 +3,7 @@ import '../../../styles/ReportsView.css';
 import LinearProgress from 'material-ui/LinearProgress';
 import { List, ListItem } from 'material-ui/List';
 import TextField from 'material-ui/TextField';
-import { TextField as ReduxTextField } from 'redux-form-material-ui';
+import { TextField as ReduxTextField, DatePicker } from 'redux-form-material-ui';
 import { Field, reduxForm, Form } from 'redux-form';
 import IconButton from 'material-ui/IconButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
@@ -30,13 +30,19 @@ class ReportsView extends React.Component {
                             disabled={true}>
                             {report.user.login === user.login
                                 ? <Form onSubmit={handleSubmit(data =>
-                                    createOrUpdateReport(data.time, report, task))}>
+                                    createOrUpdateReport(data, report, task))}>
                                     <span>
                                         <Field
                                             hintText="Hours"
                                             name="time"
                                             type="number"
                                             component={ReduxTextField} />
+                                        <Field
+                                            hintText="test"
+                                            name="date"
+                                            mode="landscape"
+                                            format={null}
+                                            component={DatePicker} />
                                         <IconButton type="submit" >
                                             {!userReport
                                                 ? <ContentAdd color="black" />
