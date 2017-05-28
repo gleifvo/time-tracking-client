@@ -2,7 +2,7 @@ import api from './client';
 import { hideLoading, showLoading } from '../actions/loading';
 import { showNotification } from '../actions/notification';
 import { put, call } from 'redux-saga/effects';
-import { loadUserData, loadUsers } from '../actions/user';
+import { loadUserData, loadUsers, loadReport } from '../actions/user';
 import { UserSelector } from '../selectors';
 import { select } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
@@ -115,6 +115,28 @@ export function* deleteUser(action) {
             closeConfirmation()
         ]));
 
+    } catch (error) {
+        yield put(showNotification({
+            message: 'Server error'
+        }));
+    }
+
+    yield put(hideLoading());
+}
+
+export function* fetchReport(action) {
+    yield put(showLoading());
+    const token = yield select(UserSelector.getToken);
+
+    try {
+        let response = yield call(api.get, action.payload._links.reports.href, {
+            headers: { token },
+            params: { projection: 'project' }
+        });
+        let reports = response.data._embedded.reports;
+
+        yield put(loadReport(action.payload, reports));
+        yield put(push('/user-report'));
     } catch (error) {
         yield put(showNotification({
             message: 'Server error'

@@ -16,6 +16,7 @@ function* sagas() {
         takeLatest(constants.VALODATE_LOGIN, userSagas.validateLogin),
         takeLatest(constants.CREATE_USER, userSagas.createUser),
         takeEvery(constants.DELETE_USER, userSagas.deleteUser),
+        takeLatest(constants.FETCH_USER_REPORT, userSagas.fetchReport),
 
         takeLatest(constants.VALIDATE_PROJECT, projectManagementSagas.validateProject),
         takeEvery(constants.DELETE_PROJECT, projectManagementSagas.deleteProject),

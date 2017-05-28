@@ -75,3 +75,20 @@ export const removeUser = (user) => {
         }
     }
 };
+
+export const fetchReport = (user) => {
+    return {
+        type: constants.FETCH_USER_REPORT,
+        payload: user
+    }
+};
+
+export const loadReport = (user, reports) => {
+    return {
+        type: constants.LOAD_USER_REPORT,
+        payload: {
+            user,
+            reports
+        }
+    }
+};

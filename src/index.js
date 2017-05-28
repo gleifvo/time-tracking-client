@@ -18,6 +18,7 @@ import projectManagement from './containers/ProjectManagement';
 import TasksView from './containers/tasksView';
 import UsersView from './containers/UsersView';
 import ProjectReport from './containers/ProjectReport';
+import UserReport from './containers/UserReport';
 import UserManagement from './containers/UserManagement';
 import TaskManagement from './containers/TaskManagement';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -50,6 +51,7 @@ render(
                     <Route path="/project-tasks" component={TasksView} />
                     <Route path="/task-management" component={TaskManagement} />
                     <Route path="/project-report" component={ProjectReport} />
+                    <Route path="/user-report" component={UserReport} />
                 </App>
             </Router>
         </Provider >

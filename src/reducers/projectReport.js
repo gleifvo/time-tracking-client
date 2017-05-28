@@ -23,7 +23,7 @@ const projectReport = (state = defaultState, action) => {
 
                     return result;
                 }, {});
-
+                
             return { ...state, ...action.payload, usersTime };
         default:
             return state;

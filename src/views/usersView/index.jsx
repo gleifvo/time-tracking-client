@@ -11,6 +11,7 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import RaisedButton from 'material-ui/RaisedButton';
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
+import ActionAssignment from 'material-ui/svg-icons/action/assignment';
 
 class UsersView extends React.Component {
 
@@ -20,7 +21,7 @@ class UsersView extends React.Component {
     }
 
     render() {
-        const { users, user, openUserForm, deleteUser } = this.props;
+        const { users, user, openUserForm, deleteUser, showReport } = this.props;
 
         return (
             <div>
@@ -42,20 +43,26 @@ class UsersView extends React.Component {
                             <TableHeaderColumn>Role</TableHeaderColumn>
                             <TableHeaderColumn>First Name</TableHeaderColumn>
                             <TableHeaderColumn>Last Name</TableHeaderColumn>
+                            <TableHeaderColumn />
                         </TableRow>
                     </TableHeader>
                     <TableBody displayRowCheckbox={false}>
                         {users.map((user, index) => (
                             <TableRow key={index}>
-                                <TableRowColumn>{
+                                <TableRowColumn>
                                     <IconButton onTouchTap={() => deleteUser(user)}>
                                         <NavigationClose />
                                     </IconButton>
-                                }</TableRowColumn>
+                                </TableRowColumn>
                                 <TableRowColumn>{user.login}</TableRowColumn>
                                 <TableRowColumn>{user.userType}</TableRowColumn>
                                 <TableRowColumn>{user.firstName}</TableRowColumn>
                                 <TableRowColumn>{user.lastName}</TableRowColumn>
+                                <TableRowColumn>
+                                    <IconButton onTouchTap={() => showReport(user)}>
+                                        <ActionAssignment color="black" />
+                                    </IconButton>
+                                </TableRowColumn>
                             </TableRow>
                         ))}
                     </TableBody>

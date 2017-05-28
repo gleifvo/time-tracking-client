@@ -10,6 +10,7 @@ import projectReport from './projectReport';
 import tasksView from './tasksView';
 import confirmation from './confirmation';
 import taskManagement from './taskManagement'
+import userReport from './userReport'
 import { routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
 
@@ -25,6 +26,7 @@ const app = combineReducers({
     projectManagement,
     taskManagement,
     projectReport,
+    userReport,
     routing: routerReducer,
     form: formReducer
 });
