@@ -1,7 +1,7 @@
 import * as constants from '../constants';
 
 const defaultState = {
-
+    usersTime: []
 }
 
 const projectReport = (state = defaultState, action) => {
@@ -20,7 +20,7 @@ const projectReport = (state = defaultState, action) => {
                             time
                         }
                         : result[user.login].time += value.time;
-                        
+
                     return result;
                 }, {});
 
