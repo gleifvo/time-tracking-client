@@ -66,8 +66,7 @@ class ProjectReport extends React.Component {
                                                         lineHeight: '60px',
                                                         textAlign: 'center',
                                                         backgroundColor: '#f1ecec'
-                                                    }}
-                                                    rowNumber={1}>
+                                                    }}>
                                                     <TableRowColumn>Total time</TableRowColumn>
                                                     <TableRowColumn>{task.reports.reduce((result, report) => result + report.time, 0)}</TableRowColumn>
                                                 </TableRow>
@@ -77,6 +76,37 @@ class ProjectReport extends React.Component {
                                 </TableRow>
                             ))}
                     </TableBody>
+                </Table>
+                <Table>
+                    <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
+                        <TableRow>
+                            <TableHeaderColumn>User</TableHeaderColumn>
+                            <TableHeaderColumn>Total time</TableHeaderColumn>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody
+                        stripedRows={true}
+                        displayRowCheckbox={false}
+                        showRowHover={true}>>
+                                {usersTime && Object.values(usersTime).map((report, index) => (
+                            <TableRow key={index}>
+                                <TableRowColumn>{`${report.user.firstName} ${report.user.lastName}`}</TableRowColumn>
+                                <TableRowColumn>{report.time}</TableRowColumn>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                    <TableFooter adjustForCheckbox={false}>
+                        <TableRow
+                            style={{
+                                borderTopColor: 'black',
+                                lineHeight: '60px',
+                                textAlign: 'center',
+                                backgroundColor: '#f1ecec'
+                            }}>
+                            <TableRowColumn>Total time</TableRowColumn>
+                            <TableRowColumn>{Object.values(usersTime).reduce((result, report) => result + report.time, 0)}</TableRowColumn>
+                        </TableRow>
+                    </TableFooter>
                 </Table>
             </span>
         )
