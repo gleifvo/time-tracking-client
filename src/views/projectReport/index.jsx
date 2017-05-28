@@ -42,7 +42,7 @@ class ProjectReport extends React.Component {
                         </TableRow>
                     </TableHeader>
                     <TableBody displayRowCheckbox={false}>
-                        {tasks.filter(task => task.reports.length)
+                        {tasks && tasks.filter(task => task.reports.length)
                             .map((task, index) => (
                                 <TableRow key={index}>
                                     <TableRowColumn>{task.name}</TableRowColumn>
