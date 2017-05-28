@@ -56,6 +56,7 @@ class ProjectReport extends React.Component {
                                                     <TableRow key={index}>
                                                         <TableRowColumn>{`${report.user.firstName} ${report.user.lastName}`}</TableRowColumn>
                                                         <TableRowColumn>{report.time}</TableRowColumn>
+                                                        <TableRowColumn>{report.date}</TableRowColumn>
                                                     </TableRow>
                                                 ))}
                                             </TableBody>
@@ -69,6 +70,7 @@ class ProjectReport extends React.Component {
                                                     }}>
                                                     <TableRowColumn>Total time</TableRowColumn>
                                                     <TableRowColumn>{task.reports.reduce((result, report) => result + report.time, 0)}</TableRowColumn>
+                                                    <TableRowColumn></TableRowColumn>
                                                 </TableRow>
                                             </TableFooter>
                                         </Table>
