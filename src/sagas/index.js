@@ -1,6 +1,6 @@
 import { takeLatest, takeEvery } from 'redux-saga/effects';
 import * as constants from '../constants';
-import { fetchProjects } from './projects';
+import * as projectSagas from './projects';
 import * as userSagas from './user';
 import * as projectManagementSagas from './projectManagement';
 import * as taskManagementSagas from './taskManagement';
@@ -8,7 +8,8 @@ import * as tasksSagas from './tasks';
 
 function* sagas() {
     yield [
-        takeLatest(constants.FETCH_PROJECTS, fetchProjects),
+        takeLatest(constants.FETCH_PROJECTS, projectSagas.fetchProjects),
+        takeLatest(constants.FETCH_REPORT, projectSagas.fetchReport),
 
         takeLatest(constants.SEND_AUTH_REQUEST, userSagas.handleAuthRequest),
         takeLatest(constants.FETCH_USERS, userSagas.fetchUsers),

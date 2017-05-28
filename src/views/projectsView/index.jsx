@@ -3,6 +3,7 @@ import { GridList, GridTile } from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import ActionPageview from 'material-ui/svg-icons/action/pageview';
 import ActionDelete from 'material-ui/svg-icons/action/delete';
+import ActionAssignment from 'material-ui/svg-icons/action/assignment';
 import EditorModeEdit from 'material-ui/svg-icons/editor/mode-edit';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -14,7 +15,7 @@ class ProjectsView extends React.Component {
     }
 
     render() {
-        const { projects, user, createNewProject, editProject, deleteProject, showTasks } = this.props;
+        const { projects, user, createNewProject, editProject, deleteProject, showTasks, showReport } = this.props;
 
         return (
             <div>
@@ -52,6 +53,9 @@ class ProjectsView extends React.Component {
                                         </IconButton>
                                     </span>
                                 }
+                                <IconButton onTouchTap={() => showReport(project)}>
+                                    <ActionAssignment color="white" />
+                                </IconButton>
                                 <IconButton onTouchTap={() => showTasks(project)}>
                                     <ActionPageview color="white" />
                                 </IconButton>

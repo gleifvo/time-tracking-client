@@ -6,6 +6,7 @@ import notification from './notification';
 import projects from './projects';
 import projectManagement from './projectManagement';
 import navDrawer from './navDrawer';
+import projectReport from './projectReport';
 import tasksView from './tasksView';
 import confirmation from './confirmation';
 import taskManagement from './taskManagement'
@@ -23,6 +24,7 @@ const app = combineReducers({
     metadata,
     projectManagement,
     taskManagement,
+    projectReport,
     routing: routerReducer,
     form: formReducer
 });

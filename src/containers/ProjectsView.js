@@ -1,7 +1,7 @@
 //@flow
 import { connect } from 'react-redux';
 import ProjectsView from '../views/projectsView';
-import { fetchProjects, deleteProject } from '../actions/projects';
+import { fetchProjects, deleteProject, fetchReport } from '../actions/projects';
 import { showConfirmation } from '../actions/confirmation';
 import { createNew as createNewProject, fetchProjectForEdit } from '../actions/projectManagement';
 import { push } from 'react-router-redux';
@@ -33,6 +33,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         showTasks: (project) => {
             dispatch(fetchTasks(project));
+        },
+        showReport: (project) => {
+            dispatch(fetchReport(project));
         },
     }
 };

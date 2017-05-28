@@ -29,3 +29,20 @@ export const removeProject = (project) => {
         payload: project
     }
 };
+
+export const fetchReport = (project) => {
+    return {
+        type: constants.FETCH_REPORT,
+        payload: project
+    }
+};
+
+export const loadReport = (project, tasks) => {
+    return {
+        type: constants.LOAD_REPORT,
+        payload: {
+            project,
+            tasks
+        }
+    }
+};

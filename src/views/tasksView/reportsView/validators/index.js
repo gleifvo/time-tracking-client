@@ -3,7 +3,7 @@ export const validator = data => {
 
     if (!data.time) {
         errors.time = 'Fill time';
-    } else if (data.time == 0) {
+    } else if (data.time === 0) {
         errors.time = 'Must be greater than 0';
     } else if (data.time < 0) {
         errors.time = 'Must be positive';
