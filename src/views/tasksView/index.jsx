@@ -55,7 +55,10 @@ class TasksView extends React.Component {
                                                         : 0,
                                                     date: userReport
                                                         ? new Date(userReport.date)
-                                                        : new Date()
+                                                        : new Date(),
+                                                    description: userReport
+                                                        ? userReport.description
+                                                        : ''
                                                 }}
                                                 userReport={userReport}
                                                 form={task.name}

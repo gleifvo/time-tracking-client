@@ -11,5 +11,9 @@ export const validator = data => {
         errors.time = 'Must be lower than 100'
     }
 
+    if (data.description && data.description.length > 200) {
+        errors.description = 'Must be 200 characters or less';
+    }
+
     return errors
 }

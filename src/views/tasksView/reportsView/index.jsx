@@ -38,11 +38,17 @@ class ReportsView extends React.Component {
                                             type="number"
                                             component={ReduxTextField} />
                                         <Field
-                                            hintText="test"
                                             name="date"
                                             mode="landscape"
                                             format={null}
                                             component={DatePicker} />
+                                        <Field
+                                            multiLine={true}
+                                            fullWidth={true}
+                                            rows={3}
+                                            hintText="Description"
+                                            name="description"
+                                            component={ReduxTextField} />
                                         <IconButton type="submit" >
                                             {!userReport
                                                 ? <ContentAdd color="black" />
@@ -51,10 +57,24 @@ class ReportsView extends React.Component {
                                         </IconButton>
                                     </span>
                                 </Form >
-                                : <TextField
-                                    disabled={true}
-                                    hintText="Hours"
-                                    value={report.time} />
+                                : <span>
+                                    <TextField
+                                        disabled={true}
+                                        hintText="Hours"
+                                        value={report.time} />
+                                    <br />
+                                    <TextField
+                                        disabled={true}
+                                        hintText="Hours"
+                                        value={report.date} />
+                                    <br />
+                                    <TextField
+                                        multiLine={true}
+                                        rows={3}
+                                        disabled={true}
+                                        hintText="Description"
+                                        value={report.description || ' '} />
+                                </span>
                             }
                         </ListItem>
                     })
