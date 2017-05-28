@@ -1,13 +1,13 @@
 import React from 'react';
-import { Card, CardHeader, CardTitle } from 'material-ui/Card';
-
+import { Card, CardHeader, CardTitle, CardActions } from 'material-ui/Card';
+import ActionAssignment from 'material-ui/svg-icons/action/assignment';
 import ActionAccountCircle from 'material-ui/svg-icons/action/account-circle';
-
+import FlatButton from 'material-ui/FlatButton';
 
 class UserInfo extends React.Component {
 
     render() {
-        const { userData } = this.props;
+        const { userData, showReport } = this.props;
         let body = userData.isLogged
             ? (
                 <Card>
@@ -21,6 +21,14 @@ class UserInfo extends React.Component {
                         style={{ textAlign: 'center' }}
                         title={`${userData.userInfo.firstName} ${userData.userInfo.lastName}`}
                         subtitle={`${userData.userInfo.userType}`} />
+                    <CardActions>
+                        <FlatButton
+                            fullWidth={true}
+                            label="Show reports"
+                            onTouchTap={() => showReport(userData.userInfo)}
+                            icon={<ActionAssignment color="black" />}
+                        />
+                    </CardActions>
                 </Card>
             )
             : (null)
