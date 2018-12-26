@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/gleifvo/time-tracking-client.svg?branch=master)](https://travis-ci.org/gleifvo/time-tracking-client)
+[![Build Status](https://travis-ci.org/vadim-hleif/time-tracking-client.svg?branch=master)](https://travis-ci.org/vadim-hleif/time-tracking-client)
 ---
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
